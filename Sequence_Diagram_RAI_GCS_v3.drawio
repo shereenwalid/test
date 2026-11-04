@@ -1,0 +1,428 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Quote-to-Order Sequence" id="seq1">
+    <mxGraphModel dx="1987" dy="1370" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;" value="Quote-to-Order - Sequence Diagram (with opportunity check / sync, Responsible AI layer and GCP/GCS)" vertex="1">
+          <mxGeometry height="30" width="1930" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="User" vertex="1">
+          <mxGeometry height="50" width="170" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="Streamlit UI" vertex="1">
+          <mxGeometry height="50" width="170" x="255" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="Backend API" vertex="1">
+          <mxGeometry height="50" width="170" x="470" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="GCS" vertex="1">
+          <mxGeometry height="50" width="170" x="685" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="Quote To Order Agent" vertex="1">
+          <mxGeometry height="50" width="170" x="900" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="Product Code Navigator" vertex="1">
+          <mxGeometry height="50" width="170" x="1115" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="Responsible AI (RAI)" vertex="1">
+          <mxGeometry height="50" width="170" x="1330" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="GCP Gemini" vertex="1">
+          <mxGeometry height="50" width="170" x="1545" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="BigQuery" vertex="1">
+          <mxGeometry height="50" width="170" x="1760" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="1. Begin Order Creation (Opportunity ID)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="125" y="130" as="sourcePoint" />
+            <mxPoint x="340" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c11" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="2. POST /log + POST /process">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="195" as="sourcePoint" />
+            <mxPoint x="555" y="195" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c12" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="3. write session log (user, datetime, opp id)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="260" as="sourcePoint" />
+            <mxPoint x="770" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c13" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="session logged">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="770" y="325" as="sourcePoint" />
+            <mxPoint x="555" y="325" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c14" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="4. check opportunity exists">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="390" as="sourcePoint" />
+            <mxPoint x="770" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c15" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="exists / not found">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="770" y="455" as="sourcePoint" />
+            <mxPoint x="555" y="455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c16" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;labelBackgroundColor=#ffffff;fontStyle=2;" value="→ continue to process" vertex="1">
+          <mxGeometry height="22" width="400" x="250" y="548" as="geometry" />
+        </mxCell>
+        <mxCell id="c17" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="opportunity not found - offer Sync now">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="620" as="sourcePoint" />
+            <mxPoint x="340" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c18" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="5. Sync now (user choice)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="685" as="sourcePoint" />
+            <mxPoint x="555" y="685" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c19" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="6. sync opportunity data">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="750" as="sourcePoint" />
+            <mxPoint x="770" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c20" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="sync result">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="770" y="815" as="sourcePoint" />
+            <mxPoint x="555" y="815" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c21" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="failure: opportunity ID doesn&#39;t exist">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="920" as="sourcePoint" />
+            <mxPoint x="340" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c22" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;labelBackgroundColor=#ffffff;fontStyle=2;" value="sync succeeded → continue to process" vertex="1">
+          <mxGeometry height="22" width="400" x="250" y="983" as="geometry" />
+        </mxCell>
+        <mxCell id="c23" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="7. invoke workflow (process starts)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="1050" as="sourcePoint" />
+            <mxPoint x="985" y="1050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c24" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="8. read VBOP data + validation.json">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="985" y="1115" as="sourcePoint" />
+            <mxPoint x="770" y="1115" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c25" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="VBOP data + validation results">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="770" y="1180" as="sourcePoint" />
+            <mxPoint x="985" y="1180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c26" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1055" y="1245" />
+              <mxPoint x="1055" y="1285" />
+            </Array>
+            <mxPoint x="985" y="1245" as="sourcePoint" />
+            <mxPoint x="985" y="1285" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c27" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;labelBackgroundColor=#ffffff;" value="9. validate VBOP vs validation.json" vertex="1">
+          <mxGeometry height="24" width="230" x="1065" y="1250" as="geometry" />
+        </mxCell>
+        <mxCell id="c28" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="10. interpret documents (LLM)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="985" y="1310" as="sourcePoint" />
+            <mxPoint x="1415" y="1310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c29" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1485" y="1375" />
+              <mxPoint x="1485" y="1415" />
+            </Array>
+            <mxPoint x="1415" y="1375" as="sourcePoint" />
+            <mxPoint x="1415" y="1415" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c30" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;labelBackgroundColor=#ffffff;" value="11. pre_checks(text)" vertex="1">
+          <mxGeometry height="24" width="230" x="1495" y="1380" as="geometry" />
+        </mxCell>
+        <mxCell id="c31" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#FCEFC7;strokeColor=#C9A227;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacing=4;size=14;" value="RAI pre/post checks per the Responsible AI configuration. Features currently governed by the RAI layer." vertex="1">
+          <mxGeometry height="70" width="495" x="1395" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="c32" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="forward prompt">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1415" y="1520" as="sourcePoint" />
+            <mxPoint x="1630" y="1520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c33" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="model response">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1630" y="1585" as="sourcePoint" />
+            <mxPoint x="1415" y="1585" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c34" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1485" y="1650" />
+              <mxPoint x="1485" y="1690" />
+            </Array>
+            <mxPoint x="1415" y="1650" as="sourcePoint" />
+            <mxPoint x="1415" y="1690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c35" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;labelBackgroundColor=#ffffff;" value="12. post_checks(response)" vertex="1">
+          <mxGeometry height="24" width="230" x="1495" y="1655" as="geometry" />
+        </mxCell>
+        <mxCell id="c36" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="interpreted result">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1415" y="1715" as="sourcePoint" />
+            <mxPoint x="985" y="1715" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c37" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="13. validate BSP checks (BigQuery tools)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="985" y="1820" as="sourcePoint" />
+            <mxPoint x="1845" y="1820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c38" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="BSP validation result">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1845" y="1885" as="sourcePoint" />
+            <mxPoint x="985" y="1885" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c39" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="14. resolve product codes">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="985" y="1965" as="sourcePoint" />
+            <mxPoint x="1200" y="1965" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c40" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="15. deterministic lookup">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1200" y="2030" as="sourcePoint" />
+            <mxPoint x="1845" y="2030" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c41" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="matched codes">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1845" y="2095" as="sourcePoint" />
+            <mxPoint x="1200" y="2095" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c42" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#FCEFC7;strokeColor=#C9A227;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacing=4;size=14;" value="Deterministic BigQuery lookup - no model call for code resolution." vertex="1">
+          <mxGeometry height="70" width="725" x="1180" y="2150" as="geometry" />
+        </mxCell>
+        <mxCell id="c43" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="resolved codes">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1200" y="2240" as="sourcePoint" />
+            <mxPoint x="985" y="2240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c44" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1055" y="2315" />
+              <mxPoint x="1055" y="2355" />
+            </Array>
+            <mxPoint x="985" y="2315" as="sourcePoint" />
+            <mxPoint x="985" y="2355" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c45" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;labelBackgroundColor=#ffffff;" value="16. format order rows" vertex="1">
+          <mxGeometry height="24" width="230" x="1065" y="2320" as="geometry" />
+        </mxCell>
+        <mxCell id="c46" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="17. draft email (LLM)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="985" y="2380" as="sourcePoint" />
+            <mxPoint x="1415" y="2380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c47" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="forward prompt">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1415" y="2445" as="sourcePoint" />
+            <mxPoint x="1630" y="2445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c48" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="model response">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1630" y="2510" as="sourcePoint" />
+            <mxPoint x="1415" y="2510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c49" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="sales order + email draft">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1415" y="2575" as="sourcePoint" />
+            <mxPoint x="985" y="2575" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c50" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="return result (order, rows, email)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="985" y="2640" as="sourcePoint" />
+            <mxPoint x="555" y="2640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c51" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="18. save sales order + rows">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="2705" as="sourcePoint" />
+            <mxPoint x="1845" y="2705" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c52" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="saved">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1845" y="2770" as="sourcePoint" />
+            <mxPoint x="555" y="2770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c53" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="final response">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="2835" as="sourcePoint" />
+            <mxPoint x="340" y="2835" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c54" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="show final output">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="2900" as="sourcePoint" />
+            <mxPoint x="125" y="2900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c55" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="125" y="90" as="sourcePoint" />
+            <mxPoint x="125" y="2975" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c56" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="90" as="sourcePoint" />
+            <mxPoint x="340" y="2975" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c57" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="90" as="sourcePoint" />
+            <mxPoint x="555" y="2975" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c58" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="770" y="90" as="sourcePoint" />
+            <mxPoint x="770" y="2975" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c59" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="985" y="90" as="sourcePoint" />
+            <mxPoint x="985" y="2975" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c60" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1200" y="90" as="sourcePoint" />
+            <mxPoint x="1200" y="2975" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c61" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1415" y="90" as="sourcePoint" />
+            <mxPoint x="1415" y="2975" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c62" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1630" y="90" as="sourcePoint" />
+            <mxPoint x="1630" y="2975" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c63" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1845" y="90" as="sourcePoint" />
+            <mxPoint x="1845" y="2975" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c64" edge="1" parent="1" style="endArrow=none;html=1;dashed=1;strokeColor=#888888;edgeStyle=none;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="235" y="575" as="sourcePoint" />
+            <mxPoint x="880" y="575" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c65" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;labelBackgroundColor=#ffffff;fontStyle=1;" value="[not found]" vertex="1">
+          <mxGeometry height="18" width="300" x="243" y="577" as="geometry" />
+        </mxCell>
+        <mxCell id="c66" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#888888;fontSize=10;fontStyle=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;" value="break [sync failed]" vertex="1">
+          <mxGeometry height="100" width="610" x="255" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="c67" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#888888;fontSize=10;fontStyle=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;" value="alt [opportunity found]" vertex="1">
+          <mxGeometry height="515" width="645" x="235" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="c68" edge="1" parent="1" style="endArrow=none;html=1;dashed=1;strokeColor=#888888;edgeStyle=none;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="895" y="1920" as="sourcePoint" />
+            <mxPoint x="1935" y="1920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c69" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;labelBackgroundColor=#ffffff;fontStyle=1;" value="[and]" vertex="1">
+          <mxGeometry height="18" width="300" x="903" y="1922" as="geometry" />
+        </mxCell>
+        <mxCell id="c70" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#888888;fontSize=10;fontStyle=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;" value="par [in parallel]" vertex="1">
+          <mxGeometry height="520" width="1040" x="895" y="1760" as="geometry" />
+        </mxCell>
+        <mxCell id="c71" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="User" vertex="1">
+          <mxGeometry height="50" width="170" x="40" y="2975" as="geometry" />
+        </mxCell>
+        <mxCell id="c72" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="Streamlit UI" vertex="1">
+          <mxGeometry height="50" width="170" x="255" y="2975" as="geometry" />
+        </mxCell>
+        <mxCell id="c73" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="Backend API" vertex="1">
+          <mxGeometry height="50" width="170" x="470" y="2975" as="geometry" />
+        </mxCell>
+        <mxCell id="c74" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="GCS" vertex="1">
+          <mxGeometry height="50" width="170" x="685" y="2975" as="geometry" />
+        </mxCell>
+        <mxCell id="c75" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="Quote To Order Agent" vertex="1">
+          <mxGeometry height="50" width="170" x="900" y="2975" as="geometry" />
+        </mxCell>
+        <mxCell id="c76" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="Product Code Navigator" vertex="1">
+          <mxGeometry height="50" width="170" x="1115" y="2975" as="geometry" />
+        </mxCell>
+        <mxCell id="c77" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="Responsible AI (RAI)" vertex="1">
+          <mxGeometry height="50" width="170" x="1330" y="2975" as="geometry" />
+        </mxCell>
+        <mxCell id="c78" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="GCP Gemini" vertex="1">
+          <mxGeometry height="50" width="170" x="1545" y="2975" as="geometry" />
+        </mxCell>
+        <mxCell id="c79" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E9EBF7;strokeColor=#333355;fontSize=11;" value="BigQuery" vertex="1">
+          <mxGeometry height="50" width="170" x="1760" y="2975" as="geometry" />
+        </mxCell>
+        <mxCell id="c80" edge="1" parent="1" style="endArrow=block;html=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="3065" as="sourcePoint" />
+            <mxPoint x="200" y="3065" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c81" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;labelBackgroundColor=#ffffff;fontSize=11;" value="Call / request" vertex="1">
+          <mxGeometry height="24" width="130" x="210" y="3053" as="geometry" />
+        </mxCell>
+        <mxCell id="c82" edge="1" parent="1" style="endArrow=open;html=1;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#222222;fillColor=#222222;edgeStyle=none;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="3065" as="sourcePoint" />
+            <mxPoint x="560" y="3065" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c83" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=10;labelBackgroundColor=#ffffff;" value="Response / return" vertex="1">
+          <mxGeometry height="24" width="150" x="570" y="3053" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
